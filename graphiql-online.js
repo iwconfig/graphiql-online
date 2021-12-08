@@ -32923,9 +32923,13 @@ var _validUrl = __webpack_require__(429);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var options = { method: 'post', headers: { 'Content-Type': 'application/json' } };
-var endpoint = new URLSearchParams(window.location.search).get('endpoint') || 'https://countries.trevorblades.com/'; // Initial
+var params = new URLSearchParams(window.location.search)
+var endpoint = params.get('endpoint') || 'https://countries.trevorblades.com/'; // Initial
+params.get('query') && window.localStorage.setItem('graphiql:query', params.get('query'));
+params.get('variables') && window.localStorage.setItem('graphiql:variables', params.get('variables'));
 
 var defaultQuery = '\n# Welcome to GraphiQL\n#\n# GraphiQL is an in-browser tool for writing, validating, and\n# testing GraphQL queries.\n#\n# Type queries into this side of the screen, and you will see intelligent\n# typeaheads aware of the current GraphQL type schema and live syntax and\n# validation errors highlighted within the text.\n#\n# GraphQL queries typically start with a "{" character. Lines that starts\n# with a # are ignored.\n#\n# An example GraphQL query might look like:\n#\n#     {\n#       field(arg: "value") {\n#         subField\n#       }\n#     }\n#\n# Keyboard shortcuts:\n#\n#       Run Query:  Ctrl-Enter (or press the play button above)\n#\n#   Auto Complete:  Ctrl-Space (or just start typing)\n#\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n# Default endpoint is an instance of https://www.graph.cool/\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n\nquery {\n  countries {\n    name\n  }\n}\n';
+
 
 var App = function (_React$Component) {
   (0, _inherits3['default'])(App, _React$Component);
