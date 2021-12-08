@@ -32924,7 +32924,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 var options = { method: 'post', headers: { 'Content-Type': 'application/json' } };
 var params = new URLSearchParams(window.location.search)
-var endpoint = params.get('endpoint') || 'https://countries.trevorblades.com/'; // Initial
+
+var endpoint = params.get('endpoint') || localStorage.getItem('graphiql:endpoint') || 'https://countries.trevorblades.com/'; // Initial
+window.localStorage.setItem('graphiql:endpoint', endpoint);
 params.get('query') && window.localStorage.setItem('graphiql:query', params.get('query'));
 params.get('variables') && window.localStorage.setItem('graphiql:variables', params.get('variables'));
 
